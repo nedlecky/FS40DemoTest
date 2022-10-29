@@ -22,6 +22,7 @@ Partial Class MainFrm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.ZebraIPTxt = New System.Windows.Forms.TextBox()
         Me.ConnectBtn = New System.Windows.Forms.Button()
         Me.DisconnectBtn = New System.Windows.Forms.Button()
@@ -30,6 +31,9 @@ Partial Class MainFrm
         Me.FS40AsciiRTB = New System.Windows.Forms.RichTextBox()
         Me.FS40ControlRTB = New System.Windows.Forms.RichTextBox()
         Me.ClearOutputsBtn = New System.Windows.Forms.Button()
+        Me.CleanupBtn = New System.Windows.Forms.Button()
+        Me.DequeueBtn = New System.Windows.Forms.Button()
+        Me.ReceiveTmr = New System.Windows.Forms.Timer(Me.components)
         Me.SuspendLayout()
         '
         'ZebraIPTxt
@@ -96,18 +100,41 @@ Partial Class MainFrm
         '
         'ClearOutputsBtn
         '
-        Me.ClearOutputsBtn.Location = New System.Drawing.Point(32, 135)
+        Me.ClearOutputsBtn.Location = New System.Drawing.Point(295, 610)
         Me.ClearOutputsBtn.Name = "ClearOutputsBtn"
         Me.ClearOutputsBtn.Size = New System.Drawing.Size(75, 68)
         Me.ClearOutputsBtn.TabIndex = 7
         Me.ClearOutputsBtn.Text = "Clear Output Windows"
         Me.ClearOutputsBtn.UseVisualStyleBackColor = True
         '
+        'CleanupBtn
+        '
+        Me.CleanupBtn.Location = New System.Drawing.Point(147, 610)
+        Me.CleanupBtn.Name = "CleanupBtn"
+        Me.CleanupBtn.Size = New System.Drawing.Size(75, 68)
+        Me.CleanupBtn.TabIndex = 8
+        Me.CleanupBtn.Text = "Cleanup"
+        Me.CleanupBtn.UseVisualStyleBackColor = True
+        '
+        'DequeueBtn
+        '
+        Me.DequeueBtn.Location = New System.Drawing.Point(12, 610)
+        Me.DequeueBtn.Name = "DequeueBtn"
+        Me.DequeueBtn.Size = New System.Drawing.Size(75, 68)
+        Me.DequeueBtn.TabIndex = 9
+        Me.DequeueBtn.Text = "Dequeue"
+        Me.DequeueBtn.UseVisualStyleBackColor = True
+        '
+        'ReceiveTmr
+        '
+        '
         'MainFrm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1381, 895)
+        Me.Controls.Add(Me.DequeueBtn)
+        Me.Controls.Add(Me.CleanupBtn)
         Me.Controls.Add(Me.ClearOutputsBtn)
         Me.Controls.Add(Me.FS40ControlRTB)
         Me.Controls.Add(Me.FS40AsciiRTB)
@@ -132,4 +159,7 @@ Partial Class MainFrm
     Friend WithEvents FS40AsciiRTB As RichTextBox
     Friend WithEvents FS40ControlRTB As RichTextBox
     Friend WithEvents ClearOutputsBtn As Button
+    Friend WithEvents CleanupBtn As Button
+    Friend WithEvents DequeueBtn As Button
+    Friend WithEvents ReceiveTmr As Timer
 End Class
