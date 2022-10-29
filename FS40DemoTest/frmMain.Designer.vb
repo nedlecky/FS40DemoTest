@@ -22,7 +22,7 @@ Partial Class MainFrm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.FS40IPTxt = New System.Windows.Forms.TextBox()
+        Me.ZebraIPTxt = New System.Windows.Forms.TextBox()
         Me.ConnectBtn = New System.Windows.Forms.Button()
         Me.DisconnectBtn = New System.Windows.Forms.Button()
         Me.ConsoleRTB = New System.Windows.Forms.RichTextBox()
@@ -32,13 +32,13 @@ Partial Class MainFrm
         Me.ClearOutputsBtn = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
-        'FS40IPTxt
+        'ZebraIPTxt
         '
-        Me.FS40IPTxt.Location = New System.Drawing.Point(122, 39)
-        Me.FS40IPTxt.Name = "FS40IPTxt"
-        Me.FS40IPTxt.Size = New System.Drawing.Size(100, 23)
-        Me.FS40IPTxt.TabIndex = 0
-        Me.FS40IPTxt.Text = "192.168.0.41"
+        Me.ZebraIPTxt.Location = New System.Drawing.Point(122, 39)
+        Me.ZebraIPTxt.Name = "ZebraIPTxt"
+        Me.ZebraIPTxt.Size = New System.Drawing.Size(100, 23)
+        Me.ZebraIPTxt.TabIndex = 0
+        Me.ZebraIPTxt.Text = "192.168.0.41"
         '
         'ConnectBtn
         '
@@ -115,7 +115,7 @@ Partial Class MainFrm
         Me.Controls.Add(Me.ConsoleRTB)
         Me.Controls.Add(Me.DisconnectBtn)
         Me.Controls.Add(Me.ConnectBtn)
-        Me.Controls.Add(Me.FS40IPTxt)
+        Me.Controls.Add(Me.ZebraIPTxt)
         Me.Name = "MainFrm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Form1"
@@ -124,7 +124,7 @@ Partial Class MainFrm
 
     End Sub
 
-    Friend WithEvents FS40IPTxt As TextBox
+    Friend WithEvents ZebraIPTxt As TextBox
     Friend WithEvents ConnectBtn As Button
     Friend WithEvents DisconnectBtn As Button
     Friend WithEvents ConsoleRTB As RichTextBox
