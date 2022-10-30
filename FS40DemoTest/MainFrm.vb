@@ -12,17 +12,17 @@ Public Class MainFrm
     '   FS40 Comm Setup for Ned's Lab
     '       Ned's Laptop                                192.168.0.252  255.255.255.0  GW 192.168.0.200
     '       FS40                                        192.168.0.41   255.255.255.0  GW 192.168.0.200
-    Dim counter As Int32 = 0
-
     Dim fs40 As ucFS40Interface = Nothing
-
     Public printQueue As Queue = New Queue
+    Dim resultCount As Integer = 0
 
     Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadPersistent()
 
         ViewerPictureBox.BackgroundImage = Image.FromFile("C:\Users\nedlecky\Desktop\Assets\20211215_121417.jpg")
         ViewerPictureBox.BackgroundImageLayout = ImageLayout.Zoom
+
+        UpdateResultCount(0)
 
         ConnectBtn.Select()
         ConnectBtn_Click(Nothing, Nothing)
@@ -71,25 +71,18 @@ Public Class MainFrm
     Private Sub ConnectBtn_Click(sender As Object, e As EventArgs) Handles ConnectBtn.Click
         Print("ConnectBtn_Click")
 
-        counter = counter + 1
-
-        PrintRTB(FS40ControlRTB, $"Control {counter}")
-        PrintRTB(FS40AsciiRTB, $"Ascii {counter}")
-        PrintRTB(FS40ResultRTB, $"Result {counter}")
-
         fs40 = New ucFS40Interface(Me)
         Dim ret As Int32 = fs40.Connect(ZebraIPTxt.Text)
         Print($"fs40.Connect({ZebraIPTxt.Text}) returns {ret}")
 
-        ReceiveTmr.Interval = 1000
+        ReceiveTmr.Interval = 50
         ReceiveTmr.Enabled = True
-
     End Sub
 
     Private Sub DisconnectBtn_Click(sender As Object, e As EventArgs) Handles DisconnectBtn.Click
         Print("DisconnectBtn_Click")
 
-        ReceiveTmr.Enabled = True
+        ReceiveTmr.Enabled = False
 
         Dim ret As Int32 = 0
         If fs40 IsNot Nothing Then
@@ -98,8 +91,6 @@ Public Class MainFrm
             fs40.Dispose()
             fs40 = Nothing
         End If
-
-
     End Sub
 
     Private Sub TriggerBtn_Click(sender As Object, e As EventArgs) Handles TriggerBtn.Click
@@ -110,11 +101,16 @@ Public Class MainFrm
 
     End Sub
 
+    Private Sub UpdateResultCount(i As Integer)
+        resultCount = i
+        ResultCountLbl.Text = i.ToString()
+    End Sub
     Private Sub ClearOutputsBtn_Click(sender As Object, e As EventArgs) Handles ClearOutputsBtn.Click
         ConsoleRTB.Clear()
         FS40ControlRTB.Clear()
         FS40AsciiRTB.Clear()
         FS40ResultRTB.Clear()
+        UpdateResultCount(0)
     End Sub
 
     Private Sub CleanupBtn_Click(sender As Object, e As EventArgs) Handles CleanupBtn.Click
@@ -169,6 +165,9 @@ Public Class MainFrm
     End Function
     Private Sub ReceiveTmr_Tick(sender As Object, e As EventArgs) Handles ReceiveTmr.Tick
         'Print("ReceiveTmr_Tick(...)")
+        If fs40 Is Nothing Then
+            Return
+        End If
 
 
         If fs40.controlClient.Available > 0 Then
@@ -186,6 +185,7 @@ Public Class MainFrm
             ImageParse(retString)
         End If
         If fs40.resultClient.Available > 0 Then
+            UpdateResultCount(resultCount + 1)
             Print($"Result received {fs40.resultClient.Available} bytes")
             PrintResult($"Received {fs40.resultClient.Available} bytes")
             PrintResult(fs40.resultClient.Receive())

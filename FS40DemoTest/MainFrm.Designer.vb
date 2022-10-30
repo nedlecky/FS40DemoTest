@@ -41,6 +41,8 @@ Partial Class MainFrm
         Me.Label3 = New System.Windows.Forms.Label()
         Me.AsciiCommandTxt = New System.Windows.Forms.TextBox()
         Me.ViewerPictureBox = New System.Windows.Forms.PictureBox()
+        Me.ResultCountLbl = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
         CType(Me.ViewerPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -156,30 +158,30 @@ Partial Class MainFrm
         '
         'Label1
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(71, 81)
+        Me.Label1.Location = New System.Drawing.Point(63, 78)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(47, 15)
+        Me.Label1.Size = New System.Drawing.Size(65, 15)
         Me.Label1.TabIndex = 12
         Me.Label1.Text = "Control"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label2
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(71, 209)
+        Me.Label2.Location = New System.Drawing.Point(75, 206)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(35, 15)
+        Me.Label2.Size = New System.Drawing.Size(53, 15)
         Me.Label2.TabIndex = 13
         Me.Label2.Text = "ASCII"
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label3
         '
-        Me.Label3.AutoSize = True
         Me.Label3.Location = New System.Drawing.Point(71, 424)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(39, 15)
+        Me.Label3.Size = New System.Drawing.Size(57, 14)
         Me.Label3.TabIndex = 14
         Me.Label3.Text = "Result"
+        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'AsciiCommandTxt
         '
@@ -197,11 +199,34 @@ Partial Class MainFrm
         Me.ViewerPictureBox.TabIndex = 16
         Me.ViewerPictureBox.TabStop = False
         '
+        'ResultCountLbl
+        '
+        Me.ResultCountLbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.ResultCountLbl.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.ResultCountLbl.Location = New System.Drawing.Point(38, 502)
+        Me.ResultCountLbl.Name = "ResultCountLbl"
+        Me.ResultCountLbl.Size = New System.Drawing.Size(63, 23)
+        Me.ResultCountLbl.TabIndex = 17
+        Me.ResultCountLbl.Text = "0"
+        Me.ResultCountLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label5
+        '
+        Me.Label5.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label5.Location = New System.Drawing.Point(38, 438)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(63, 52)
+        Me.Label5.TabIndex = 18
+        Me.Label5.Text = "Result" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Count"
+        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'MainFrm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1381, 895)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.ResultCountLbl)
         Me.Controls.Add(Me.ViewerPictureBox)
         Me.Controls.Add(Me.AsciiCommandTxt)
         Me.Controls.Add(Me.Label3)
@@ -246,4 +271,6 @@ Partial Class MainFrm
     Friend WithEvents Label3 As Label
     Friend WithEvents AsciiCommandTxt As TextBox
     Friend WithEvents ViewerPictureBox As PictureBox
+    Friend WithEvents ResultCountLbl As Label
+    Friend WithEvents Label5 As Label
 End Class
