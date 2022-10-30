@@ -49,6 +49,11 @@ Public Class MainFrm
     Private Sub PrintRTB(rtb As RichTextBox, message As String)
         Dim timestamp As String = Format(Now, "HH.mm.ss.fff ")
         rtb.Text += timestamp + message + Environment.NewLine
+
+        Dim length As Integer = rtb.Text.Length
+        If length > 10000 Then
+            rtb.Text = rtb.Text.Substring(length - 5000, 5000)
+        End If
         rtb.SelectionStart = rtb.Text.Length
         rtb.ScrollToCaret()
     End Sub

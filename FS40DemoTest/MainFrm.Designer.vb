@@ -84,6 +84,7 @@ Partial Class MainFrm
         'FS40ResultRTB
         '
         Me.FS40ResultRTB.Location = New System.Drawing.Point(134, 424)
+        Me.FS40ResultRTB.MaxLength = 1000000
         Me.FS40ResultRTB.Name = "FS40ResultRTB"
         Me.FS40ResultRTB.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth
         Me.FS40ResultRTB.Size = New System.Drawing.Size(540, 213)
@@ -93,6 +94,7 @@ Partial Class MainFrm
         'FS40AsciiRTB
         '
         Me.FS40AsciiRTB.Location = New System.Drawing.Point(134, 206)
+        Me.FS40AsciiRTB.MaxLength = 1000000
         Me.FS40AsciiRTB.Name = "FS40AsciiRTB"
         Me.FS40AsciiRTB.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth
         Me.FS40AsciiRTB.Size = New System.Drawing.Size(540, 212)
@@ -102,6 +104,7 @@ Partial Class MainFrm
         'FS40ControlRTB
         '
         Me.FS40ControlRTB.Location = New System.Drawing.Point(134, 75)
+        Me.FS40ControlRTB.MaxLength = 1000000
         Me.FS40ControlRTB.Name = "FS40ControlRTB"
         Me.FS40ControlRTB.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth
         Me.FS40ControlRTB.Size = New System.Drawing.Size(540, 125)
