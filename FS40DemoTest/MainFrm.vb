@@ -1,4 +1,7 @@
-﻿Imports System.Runtime.CompilerServices
+﻿Imports System.ComponentModel.DataAnnotations
+Imports System.IO
+Imports System.Runtime.CompilerServices
+Imports System.Windows.Forms.VisualStyles
 Imports Microsoft.Win32
 
 Public Class MainFrm
@@ -11,14 +14,18 @@ Public Class MainFrm
     '       FS40                                        192.168.0.41   255.255.255.0  GW 192.168.0.200
     Dim counter As Int32 = 0
 
-    Dim fs40 As ucFS40Interface
+    Dim fs40 As ucFS40Interface = Nothing
 
     Public printQueue As Queue = New Queue
 
     Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadPersistent()
 
+        ViewerPictureBox.BackgroundImage = Image.FromFile("C:\Users\nedlecky\Desktop\Assets\20211215_121417.jpg")
+        ViewerPictureBox.BackgroundImageLayout = ImageLayout.Stretch
+
         ConnectBtn.Select()
+        ConnectBtn_Click(Nothing, Nothing)
     End Sub
     Private Sub MainFrm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         SavePersistent()
@@ -84,10 +91,15 @@ Public Class MainFrm
 
         ReceiveTmr.Enabled = True
 
-        Dim ret As Int32 = fs40.Disconnect()
-        Print($"fs40.Disconnect({ZebraIPTxt.Text}) returns {ret}")
+        Dim ret As Int32 = 0
+        If fs40 IsNot Nothing Then
+            ret = fs40.Disconnect()
+            Print($"fs40.Disconnect({ZebraIPTxt.Text}) returns {ret}")
+            fs40.Dispose()
+            fs40 = Nothing
+        End If
 
-        fs40.Dispose()
+
     End Sub
 
     Private Sub TriggerBtn_Click(sender As Object, e As EventArgs) Handles TriggerBtn.Click
@@ -118,6 +130,44 @@ Public Class MainFrm
         End While
     End Sub
 
+    Public Function ImageParse(fs40Return As String) As Image
+        Dim retImage As Image = Nothing
+
+        Dim lines() As String = fs40Return.Split(Chr(13))
+        Print($"ImageParse sees {lines.Length} lines")
+        If lines.Length < 4 Then
+            Return Nothing
+        End If
+
+        Print($"line 1 is {lines(0).Trim()}")
+        Print($"line 2 is {lines(1).Trim()}")
+        Print($"line 3 starts {lines(2).Substring(0, 40).Trim()}")
+
+        Dim line1 As String = lines(0).Trim()
+        Dim line2 As String = lines(1).Trim()
+        Dim line3 As String = lines(2).Trim()
+
+        If line1 = "command:getresultimage,ok" Then
+            Dim length As Integer = Convert.ToInt32(line2)
+            Print($"length = {length} and line3.Length = {line3.Length}")
+            If (length = line3.Length) Then
+                Print("Looks like a valid Base64 image!")
+                Dim convertor As ImageConverter = New ImageConverter()
+                Dim bytes As Byte() = System.Text.Encoding.Default.GetBytes(line3)
+                'retImage = CType(convertor.ConvertFrom(bytes), Image)
+                Dim ms As MemoryStream = New MemoryStream(bytes)
+                Print($"bytes.Length = {bytes.Length}  ms.Length = {ms.Length}")
+                Try
+                    retImage = Image.FromStream(ms)
+                Catch
+                    Print("Image conversion FAILED")
+                End Try
+            End If
+        End If
+
+        Return retImage
+
+    End Function
     Private Sub ReceiveTmr_Tick(sender As Object, e As EventArgs) Handles ReceiveTmr.Tick
         'Print("ReceiveTmr_Tick(...)")
 
@@ -133,6 +183,8 @@ Public Class MainFrm
             Dim retString = fs40.asciiClient.Receive()
             Print($"Ascii receive string length = {retString.Length} bytes")
             PrintAscii(retString)
+
+            ImageParse(retString)
         End If
         If fs40.resultClient.Available > 0 Then
             Print($"Result received {fs40.resultClient.Available} bytes")

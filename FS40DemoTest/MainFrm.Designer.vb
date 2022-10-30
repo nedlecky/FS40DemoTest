@@ -40,6 +40,8 @@ Partial Class MainFrm
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.AsciiCommandTxt = New System.Windows.Forms.TextBox()
+        Me.ViewerPictureBox = New System.Windows.Forms.PictureBox()
+        CType(Me.ViewerPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ZebraIPTxt
@@ -82,7 +84,7 @@ Partial Class MainFrm
         Me.FS40ResultRTB.Location = New System.Drawing.Point(376, 465)
         Me.FS40ResultRTB.Name = "FS40ResultRTB"
         Me.FS40ResultRTB.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth
-        Me.FS40ResultRTB.Size = New System.Drawing.Size(993, 213)
+        Me.FS40ResultRTB.Size = New System.Drawing.Size(540, 213)
         Me.FS40ResultRTB.TabIndex = 4
         Me.FS40ResultRTB.Text = ""
         '
@@ -91,7 +93,7 @@ Partial Class MainFrm
         Me.FS40AsciiRTB.Location = New System.Drawing.Point(376, 247)
         Me.FS40AsciiRTB.Name = "FS40AsciiRTB"
         Me.FS40AsciiRTB.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth
-        Me.FS40AsciiRTB.Size = New System.Drawing.Size(993, 212)
+        Me.FS40AsciiRTB.Size = New System.Drawing.Size(540, 212)
         Me.FS40AsciiRTB.TabIndex = 5
         Me.FS40AsciiRTB.Text = ""
         '
@@ -100,7 +102,7 @@ Partial Class MainFrm
         Me.FS40ControlRTB.Location = New System.Drawing.Point(376, 29)
         Me.FS40ControlRTB.Name = "FS40ControlRTB"
         Me.FS40ControlRTB.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth
-        Me.FS40ControlRTB.Size = New System.Drawing.Size(993, 212)
+        Me.FS40ControlRTB.Size = New System.Drawing.Size(540, 212)
         Me.FS40ControlRTB.TabIndex = 6
         Me.FS40ControlRTB.Text = ""
         '
@@ -187,11 +189,20 @@ Partial Class MainFrm
         Me.AsciiCommandTxt.TabIndex = 15
         Me.AsciiCommandTxt.Text = "getresultimage"
         '
+        'ViewerPictureBox
+        '
+        Me.ViewerPictureBox.Location = New System.Drawing.Point(957, 29)
+        Me.ViewerPictureBox.Name = "ViewerPictureBox"
+        Me.ViewerPictureBox.Size = New System.Drawing.Size(359, 430)
+        Me.ViewerPictureBox.TabIndex = 16
+        Me.ViewerPictureBox.TabStop = False
+        '
         'MainFrm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1381, 895)
+        Me.Controls.Add(Me.ViewerPictureBox)
         Me.Controls.Add(Me.AsciiCommandTxt)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
@@ -211,6 +222,7 @@ Partial Class MainFrm
         Me.Name = "MainFrm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Form1"
+        CType(Me.ViewerPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -233,4 +245,5 @@ Partial Class MainFrm
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents AsciiCommandTxt As TextBox
+    Friend WithEvents ViewerPictureBox As PictureBox
 End Class
