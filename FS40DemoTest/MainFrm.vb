@@ -12,6 +12,7 @@ Public Class MainFrm
     Dim counter As Int32 = 0
 
     Dim fs40 As ucFS40Interface
+
     Public printQueue As Queue = New Queue
 
     Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -21,6 +22,7 @@ Public Class MainFrm
     End Sub
     Private Sub MainFrm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         SavePersistent()
+        DisconnectBtn_Click(Nothing, Nothing)
     End Sub
 
     Private Function GetAppNameKey() As RegistryKey
@@ -40,13 +42,23 @@ Public Class MainFrm
     End Sub
 
     Private Sub PrintRTB(rtb As RichTextBox, message As String)
-        rtb.Text += message + Environment.NewLine
+        Dim timestamp As String = Format(Now, "HH.mm.ss.fff ")
+        rtb.Text += timestamp + message + Environment.NewLine
         rtb.SelectionStart = rtb.Text.Length
         rtb.ScrollToCaret()
     End Sub
 
     Public Sub Print(message As String)
         PrintRTB(ConsoleRTB, message)
+    End Sub
+    Public Sub PrintControl(message As String)
+        PrintRTB(FS40ControlRTB, message)
+    End Sub
+    Public Sub PrintAscii(message As String)
+        PrintRTB(FS40AsciiRTB, message)
+    End Sub
+    Public Sub PrintResult(message As String)
+        PrintRTB(FS40ResultRTB, message)
     End Sub
 
     Private Sub ConnectBtn_Click(sender As Object, e As EventArgs) Handles ConnectBtn.Click
@@ -71,12 +83,19 @@ Public Class MainFrm
         Print("DisconnectBtn_Click")
 
         ReceiveTmr.Enabled = True
-        fs40.Poll()
 
         Dim ret As Int32 = fs40.Disconnect()
         Print($"fs40.Disconnect({ZebraIPTxt.Text}) returns {ret}")
 
         fs40.Dispose()
+    End Sub
+
+    Private Sub TriggerBtn_Click(sender As Object, e As EventArgs) Handles TriggerBtn.Click
+        fs40.SendControl("TRIGGER" + Chr(13) + Chr(10))
+    End Sub
+    Private Sub AsciiSendBtn_Click(sender As Object, e As EventArgs) Handles AsciiSendBtn.Click
+        fs40.SendAscii(AsciiCommandTxt.Text + Chr(13) + Chr(10))
+
     End Sub
 
     Private Sub ClearOutputsBtn_Click(sender As Object, e As EventArgs) Handles ClearOutputsBtn.Click
@@ -100,11 +119,26 @@ Public Class MainFrm
     End Sub
 
     Private Sub ReceiveTmr_Tick(sender As Object, e As EventArgs) Handles ReceiveTmr.Tick
-        Print("ReceiveTmr_Tick(...)")
-
-        fs40.Poll()
+        'Print("ReceiveTmr_Tick(...)")
 
 
-
+        If fs40.controlClient.Available > 0 Then
+            Print($"Control received {fs40.controlClient.Available} bytes")
+            PrintControl($"Received {fs40.controlClient.Available} bytes")
+            PrintControl(fs40.controlClient.Receive())
+        End If
+        If fs40.asciiClient.Available > 0 Then
+            Print($"Ascii received {fs40.asciiClient.Available} bytes")
+            PrintAscii($"Received {fs40.asciiClient.Available} bytes")
+            Dim retString = fs40.asciiClient.Receive()
+            Print($"Ascii receive string length = {retString.Length} bytes")
+            PrintAscii(retString)
+        End If
+        If fs40.resultClient.Available > 0 Then
+            Print($"Result received {fs40.resultClient.Available} bytes")
+            PrintResult($"Received {fs40.resultClient.Available} bytes")
+            PrintResult(fs40.resultClient.Receive())
+        End If
     End Sub
+
 End Class

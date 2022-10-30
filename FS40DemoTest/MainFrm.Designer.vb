@@ -34,6 +34,12 @@ Partial Class MainFrm
         Me.CleanupBtn = New System.Windows.Forms.Button()
         Me.DequeueBtn = New System.Windows.Forms.Button()
         Me.ReceiveTmr = New System.Windows.Forms.Timer(Me.components)
+        Me.TriggerBtn = New System.Windows.Forms.Button()
+        Me.AsciiSendBtn = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.AsciiCommandTxt = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'ZebraIPTxt
@@ -128,11 +134,70 @@ Partial Class MainFrm
         'ReceiveTmr
         '
         '
+        'TriggerBtn
+        '
+        Me.TriggerBtn.Location = New System.Drawing.Point(295, 53)
+        Me.TriggerBtn.Name = "TriggerBtn"
+        Me.TriggerBtn.Size = New System.Drawing.Size(75, 23)
+        Me.TriggerBtn.TabIndex = 10
+        Me.TriggerBtn.Text = "Trigger"
+        Me.TriggerBtn.UseVisualStyleBackColor = True
+        '
+        'AsciiSendBtn
+        '
+        Me.AsciiSendBtn.Location = New System.Drawing.Point(248, 268)
+        Me.AsciiSendBtn.Name = "AsciiSendBtn"
+        Me.AsciiSendBtn.Size = New System.Drawing.Size(122, 23)
+        Me.AsciiSendBtn.TabIndex = 11
+        Me.AsciiSendBtn.Text = "Send"
+        Me.AsciiSendBtn.UseVisualStyleBackColor = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(313, 35)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(47, 15)
+        Me.Label1.TabIndex = 12
+        Me.Label1.Text = "Control"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(313, 250)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(35, 15)
+        Me.Label2.TabIndex = 13
+        Me.Label2.Text = "ASCII"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(313, 465)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(39, 15)
+        Me.Label3.TabIndex = 14
+        Me.Label3.Text = "Result"
+        '
+        'AsciiCommandTxt
+        '
+        Me.AsciiCommandTxt.Location = New System.Drawing.Point(248, 297)
+        Me.AsciiCommandTxt.Name = "AsciiCommandTxt"
+        Me.AsciiCommandTxt.Size = New System.Drawing.Size(122, 23)
+        Me.AsciiCommandTxt.TabIndex = 15
+        Me.AsciiCommandTxt.Text = "getresultimage"
+        '
         'MainFrm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1381, 895)
+        Me.Controls.Add(Me.AsciiCommandTxt)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.AsciiSendBtn)
+        Me.Controls.Add(Me.TriggerBtn)
         Me.Controls.Add(Me.DequeueBtn)
         Me.Controls.Add(Me.CleanupBtn)
         Me.Controls.Add(Me.ClearOutputsBtn)
@@ -162,4 +227,10 @@ Partial Class MainFrm
     Friend WithEvents CleanupBtn As Button
     Friend WithEvents DequeueBtn As Button
     Friend WithEvents ReceiveTmr As Timer
+    Friend WithEvents TriggerBtn As Button
+    Friend WithEvents AsciiSendBtn As Button
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents AsciiCommandTxt As TextBox
 End Class
