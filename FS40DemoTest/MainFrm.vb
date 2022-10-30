@@ -17,10 +17,8 @@ Public Class MainFrm
     Dim resultCount As Integer = 0
 
     Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.Text = "FS40 Demo/Test Program"
         LoadPersistent()
-
-        ViewerPictureBox.BackgroundImage = Image.FromFile("C:\Users\nedlecky\Desktop\Assets\20211215_121417.jpg")
-        ViewerPictureBox.BackgroundImageLayout = ImageLayout.Zoom
 
         UpdateResultCount(0)
 
@@ -171,24 +169,25 @@ Public Class MainFrm
 
 
         If fs40.controlClient.Available > 0 Then
-            Print($"Control received {fs40.controlClient.Available} bytes")
-            PrintControl($"Received {fs40.controlClient.Available} bytes")
-            PrintControl(fs40.controlClient.Receive())
+            Dim available As Integer = fs40.controlClient.Available
+            Dim result As String = fs40.controlClient.Receive()
+            Print($"Control received {available} bytes  {result}")
+            PrintControl($"Received {available} bytes  {result}")
         End If
         If fs40.asciiClient.Available > 0 Then
-            Print($"Ascii received {fs40.asciiClient.Available} bytes")
-            PrintAscii($"Received {fs40.asciiClient.Available} bytes")
-            Dim retString = fs40.asciiClient.Receive()
-            Print($"Ascii receive string length = {retString.Length} bytes")
-            PrintAscii(retString)
+            Dim available As Integer = fs40.asciiClient.Available
+            Dim result = fs40.asciiClient.Receive()
+            Print($"Ascii received {available} bytes  {result}")
+            PrintAscii($"Received {available} bytes  {result}")
 
-            ImageParse(retString)
+            ImageParse(result)
         End If
         If fs40.resultClient.Available > 0 Then
+            Dim available As Integer = fs40.resultClient.Available
+            Dim result As String = fs40.resultClient.Receive()
             UpdateResultCount(resultCount + 1)
-            Print($"Result received {fs40.resultClient.Available} bytes")
-            PrintResult($"Received {fs40.resultClient.Available} bytes")
-            PrintResult(fs40.resultClient.Receive())
+            Print($"Result received {available} bytes  {result}")
+            PrintResult($"Received {available} bytes  {result}")
         End If
     End Sub
 

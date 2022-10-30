@@ -193,6 +193,7 @@ Partial Class MainFrm
         '
         'ViewerPictureBox
         '
+        Me.ViewerPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ViewerPictureBox.Location = New System.Drawing.Point(703, 9)
         Me.ViewerPictureBox.Name = "ViewerPictureBox"
         Me.ViewerPictureBox.Size = New System.Drawing.Size(666, 409)
