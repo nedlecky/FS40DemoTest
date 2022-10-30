@@ -46,7 +46,7 @@ Partial Class MainFrm
         '
         'ZebraIPTxt
         '
-        Me.ZebraIPTxt.Location = New System.Drawing.Point(122, 39)
+        Me.ZebraIPTxt.Location = New System.Drawing.Point(93, 12)
         Me.ZebraIPTxt.Name = "ZebraIPTxt"
         Me.ZebraIPTxt.Size = New System.Drawing.Size(100, 23)
         Me.ZebraIPTxt.TabIndex = 0
@@ -54,7 +54,7 @@ Partial Class MainFrm
         '
         'ConnectBtn
         '
-        Me.ConnectBtn.Location = New System.Drawing.Point(32, 38)
+        Me.ConnectBtn.Location = New System.Drawing.Point(12, 12)
         Me.ConnectBtn.Name = "ConnectBtn"
         Me.ConnectBtn.Size = New System.Drawing.Size(75, 23)
         Me.ConnectBtn.TabIndex = 1
@@ -63,7 +63,7 @@ Partial Class MainFrm
         '
         'DisconnectBtn
         '
-        Me.DisconnectBtn.Location = New System.Drawing.Point(32, 67)
+        Me.DisconnectBtn.Location = New System.Drawing.Point(12, 39)
         Me.DisconnectBtn.Name = "DisconnectBtn"
         Me.DisconnectBtn.Size = New System.Drawing.Size(75, 23)
         Me.DisconnectBtn.TabIndex = 2
@@ -72,16 +72,16 @@ Partial Class MainFrm
         '
         'ConsoleRTB
         '
-        Me.ConsoleRTB.Location = New System.Drawing.Point(12, 684)
+        Me.ConsoleRTB.Location = New System.Drawing.Point(12, 643)
         Me.ConsoleRTB.Name = "ConsoleRTB"
         Me.ConsoleRTB.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth
-        Me.ConsoleRTB.Size = New System.Drawing.Size(1357, 199)
+        Me.ConsoleRTB.Size = New System.Drawing.Size(1357, 219)
         Me.ConsoleRTB.TabIndex = 3
         Me.ConsoleRTB.Text = ""
         '
         'FS40ResultRTB
         '
-        Me.FS40ResultRTB.Location = New System.Drawing.Point(376, 465)
+        Me.FS40ResultRTB.Location = New System.Drawing.Point(134, 424)
         Me.FS40ResultRTB.Name = "FS40ResultRTB"
         Me.FS40ResultRTB.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth
         Me.FS40ResultRTB.Size = New System.Drawing.Size(540, 213)
@@ -90,7 +90,7 @@ Partial Class MainFrm
         '
         'FS40AsciiRTB
         '
-        Me.FS40AsciiRTB.Location = New System.Drawing.Point(376, 247)
+        Me.FS40AsciiRTB.Location = New System.Drawing.Point(134, 206)
         Me.FS40AsciiRTB.Name = "FS40AsciiRTB"
         Me.FS40AsciiRTB.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth
         Me.FS40AsciiRTB.Size = New System.Drawing.Size(540, 212)
@@ -99,16 +99,16 @@ Partial Class MainFrm
         '
         'FS40ControlRTB
         '
-        Me.FS40ControlRTB.Location = New System.Drawing.Point(376, 29)
+        Me.FS40ControlRTB.Location = New System.Drawing.Point(134, 75)
         Me.FS40ControlRTB.Name = "FS40ControlRTB"
         Me.FS40ControlRTB.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth
-        Me.FS40ControlRTB.Size = New System.Drawing.Size(540, 212)
+        Me.FS40ControlRTB.Size = New System.Drawing.Size(540, 125)
         Me.FS40ControlRTB.TabIndex = 6
         Me.FS40ControlRTB.Text = ""
         '
         'ClearOutputsBtn
         '
-        Me.ClearOutputsBtn.Location = New System.Drawing.Point(295, 610)
+        Me.ClearOutputsBtn.Location = New System.Drawing.Point(12, 569)
         Me.ClearOutputsBtn.Name = "ClearOutputsBtn"
         Me.ClearOutputsBtn.Size = New System.Drawing.Size(75, 68)
         Me.ClearOutputsBtn.TabIndex = 7
@@ -117,7 +117,7 @@ Partial Class MainFrm
         '
         'CleanupBtn
         '
-        Me.CleanupBtn.Location = New System.Drawing.Point(147, 610)
+        Me.CleanupBtn.Location = New System.Drawing.Point(718, 569)
         Me.CleanupBtn.Name = "CleanupBtn"
         Me.CleanupBtn.Size = New System.Drawing.Size(75, 68)
         Me.CleanupBtn.TabIndex = 8
@@ -126,7 +126,7 @@ Partial Class MainFrm
         '
         'DequeueBtn
         '
-        Me.DequeueBtn.Location = New System.Drawing.Point(12, 610)
+        Me.DequeueBtn.Location = New System.Drawing.Point(799, 569)
         Me.DequeueBtn.Name = "DequeueBtn"
         Me.DequeueBtn.Size = New System.Drawing.Size(75, 68)
         Me.DequeueBtn.TabIndex = 9
@@ -138,7 +138,7 @@ Partial Class MainFrm
         '
         'TriggerBtn
         '
-        Me.TriggerBtn.Location = New System.Drawing.Point(295, 53)
+        Me.TriggerBtn.Location = New System.Drawing.Point(53, 99)
         Me.TriggerBtn.Name = "TriggerBtn"
         Me.TriggerBtn.Size = New System.Drawing.Size(75, 23)
         Me.TriggerBtn.TabIndex = 10
@@ -147,7 +147,7 @@ Partial Class MainFrm
         '
         'AsciiSendBtn
         '
-        Me.AsciiSendBtn.Location = New System.Drawing.Point(248, 268)
+        Me.AsciiSendBtn.Location = New System.Drawing.Point(6, 227)
         Me.AsciiSendBtn.Name = "AsciiSendBtn"
         Me.AsciiSendBtn.Size = New System.Drawing.Size(122, 23)
         Me.AsciiSendBtn.TabIndex = 11
@@ -157,7 +157,7 @@ Partial Class MainFrm
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(313, 35)
+        Me.Label1.Location = New System.Drawing.Point(71, 81)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(47, 15)
         Me.Label1.TabIndex = 12
@@ -166,7 +166,7 @@ Partial Class MainFrm
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(313, 250)
+        Me.Label2.Location = New System.Drawing.Point(71, 209)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(35, 15)
         Me.Label2.TabIndex = 13
@@ -175,7 +175,7 @@ Partial Class MainFrm
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(313, 465)
+        Me.Label3.Location = New System.Drawing.Point(71, 424)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(39, 15)
         Me.Label3.TabIndex = 14
@@ -183,7 +183,7 @@ Partial Class MainFrm
         '
         'AsciiCommandTxt
         '
-        Me.AsciiCommandTxt.Location = New System.Drawing.Point(248, 297)
+        Me.AsciiCommandTxt.Location = New System.Drawing.Point(6, 256)
         Me.AsciiCommandTxt.Name = "AsciiCommandTxt"
         Me.AsciiCommandTxt.Size = New System.Drawing.Size(122, 23)
         Me.AsciiCommandTxt.TabIndex = 15
@@ -191,9 +191,9 @@ Partial Class MainFrm
         '
         'ViewerPictureBox
         '
-        Me.ViewerPictureBox.Location = New System.Drawing.Point(957, 29)
+        Me.ViewerPictureBox.Location = New System.Drawing.Point(703, 9)
         Me.ViewerPictureBox.Name = "ViewerPictureBox"
-        Me.ViewerPictureBox.Size = New System.Drawing.Size(359, 430)
+        Me.ViewerPictureBox.Size = New System.Drawing.Size(666, 409)
         Me.ViewerPictureBox.TabIndex = 16
         Me.ViewerPictureBox.TabStop = False
         '

@@ -22,7 +22,7 @@ Public Class MainFrm
         LoadPersistent()
 
         ViewerPictureBox.BackgroundImage = Image.FromFile("C:\Users\nedlecky\Desktop\Assets\20211215_121417.jpg")
-        ViewerPictureBox.BackgroundImageLayout = ImageLayout.Stretch
+        ViewerPictureBox.BackgroundImageLayout = ImageLayout.Zoom
 
         ConnectBtn.Select()
         ConnectBtn_Click(Nothing, Nothing)
@@ -152,13 +152,12 @@ Public Class MainFrm
             Print($"length = {length} and line3.Length = {line3.Length}")
             If (length = line3.Length) Then
                 Print("Looks like a valid Base64 image!")
-                Dim convertor As ImageConverter = New ImageConverter()
-                Dim bytes As Byte() = System.Text.Encoding.Default.GetBytes(line3)
-                'retImage = CType(convertor.ConvertFrom(bytes), Image)
+                Dim bytes As Byte() = Convert.FromBase64String(line3)
                 Dim ms As MemoryStream = New MemoryStream(bytes)
                 Print($"bytes.Length = {bytes.Length}  ms.Length = {ms.Length}")
                 Try
                     retImage = Image.FromStream(ms)
+                    ViewerPictureBox.BackgroundImage = retImage
                 Catch
                     Print("Image conversion FAILED")
                 End Try
