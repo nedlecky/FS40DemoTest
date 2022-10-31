@@ -17,7 +17,7 @@ Public Class MainFrm
     Dim resultCount As Integer = 0
 
     Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.Text = "FS40 Demo/Test Program"
+        Me.Text = "TensorID FS40 Demo/Test Program"
         LoadPersistent()
 
         UpdateResultCount(0)
@@ -101,7 +101,13 @@ Public Class MainFrm
     End Sub
     Private Sub AsciiSendBtn_Click(sender As Object, e As EventArgs) Handles AsciiSendBtn.Click
         fs40.SendAscii(AsciiCommandTxt.Text + Chr(13) + Chr(10))
+    End Sub
+    Private Sub SendGetResultImageBtn_Click(sender As Object, e As EventArgs) Handles SendGetResultImageBtn.Click
+        fs40.SendAscii("getresultimage" + Chr(13) + Chr(10))
+    End Sub
 
+    Private Sub SendGetImageBtn_Click(sender As Object, e As EventArgs) Handles SendGetImageBtn.Click
+        fs40.SendAscii("getimage" + Chr(13) + Chr(10))
     End Sub
 
     Private Sub UpdateResultCount(i As Integer)

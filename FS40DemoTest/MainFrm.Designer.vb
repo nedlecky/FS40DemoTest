@@ -23,6 +23,7 @@ Partial Class MainFrm
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainFrm))
         Me.ZebraIPTxt = New System.Windows.Forms.TextBox()
         Me.ConnectBtn = New System.Windows.Forms.Button()
         Me.DisconnectBtn = New System.Windows.Forms.Button()
@@ -43,12 +44,17 @@ Partial Class MainFrm
         Me.ViewerPictureBox = New System.Windows.Forms.PictureBox()
         Me.ResultCountLbl = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
+        Me.LogoPictureBox = New System.Windows.Forms.PictureBox()
+        Me.SendGetResultImageBtn = New System.Windows.Forms.Button()
+        Me.SendGetImageBtn = New System.Windows.Forms.Button()
+        Me.Label4 = New System.Windows.Forms.Label()
         CType(Me.ViewerPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ZebraIPTxt
         '
-        Me.ZebraIPTxt.Location = New System.Drawing.Point(93, 12)
+        Me.ZebraIPTxt.Location = New System.Drawing.Point(761, 593)
         Me.ZebraIPTxt.Name = "ZebraIPTxt"
         Me.ZebraIPTxt.Size = New System.Drawing.Size(100, 23)
         Me.ZebraIPTxt.TabIndex = 0
@@ -56,18 +62,18 @@ Partial Class MainFrm
         '
         'ConnectBtn
         '
-        Me.ConnectBtn.Location = New System.Drawing.Point(12, 12)
+        Me.ConnectBtn.Location = New System.Drawing.Point(680, 569)
         Me.ConnectBtn.Name = "ConnectBtn"
-        Me.ConnectBtn.Size = New System.Drawing.Size(75, 23)
+        Me.ConnectBtn.Size = New System.Drawing.Size(75, 68)
         Me.ConnectBtn.TabIndex = 1
         Me.ConnectBtn.Text = "Connect"
         Me.ConnectBtn.UseVisualStyleBackColor = True
         '
         'DisconnectBtn
         '
-        Me.DisconnectBtn.Location = New System.Drawing.Point(12, 39)
+        Me.DisconnectBtn.Location = New System.Drawing.Point(867, 569)
         Me.DisconnectBtn.Name = "DisconnectBtn"
-        Me.DisconnectBtn.Size = New System.Drawing.Size(75, 23)
+        Me.DisconnectBtn.Size = New System.Drawing.Size(75, 68)
         Me.DisconnectBtn.TabIndex = 2
         Me.DisconnectBtn.Text = "Disconnect"
         Me.DisconnectBtn.UseVisualStyleBackColor = True
@@ -83,27 +89,27 @@ Partial Class MainFrm
         '
         'FS40ResultRTB
         '
-        Me.FS40ResultRTB.Location = New System.Drawing.Point(134, 424)
+        Me.FS40ResultRTB.Location = New System.Drawing.Point(134, 457)
         Me.FS40ResultRTB.MaxLength = 1000000
         Me.FS40ResultRTB.Name = "FS40ResultRTB"
         Me.FS40ResultRTB.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth
-        Me.FS40ResultRTB.Size = New System.Drawing.Size(540, 213)
+        Me.FS40ResultRTB.Size = New System.Drawing.Size(540, 180)
         Me.FS40ResultRTB.TabIndex = 4
         Me.FS40ResultRTB.Text = ""
         '
         'FS40AsciiRTB
         '
-        Me.FS40AsciiRTB.Location = New System.Drawing.Point(134, 206)
+        Me.FS40AsciiRTB.Location = New System.Drawing.Point(134, 274)
         Me.FS40AsciiRTB.MaxLength = 1000000
         Me.FS40AsciiRTB.Name = "FS40AsciiRTB"
         Me.FS40AsciiRTB.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth
-        Me.FS40AsciiRTB.Size = New System.Drawing.Size(540, 212)
+        Me.FS40AsciiRTB.Size = New System.Drawing.Size(540, 176)
         Me.FS40AsciiRTB.TabIndex = 5
         Me.FS40AsciiRTB.Text = ""
         '
         'FS40ControlRTB
         '
-        Me.FS40ControlRTB.Location = New System.Drawing.Point(134, 75)
+        Me.FS40ControlRTB.Location = New System.Drawing.Point(134, 143)
         Me.FS40ControlRTB.MaxLength = 1000000
         Me.FS40ControlRTB.Name = "FS40ControlRTB"
         Me.FS40ControlRTB.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth
@@ -115,14 +121,14 @@ Partial Class MainFrm
         '
         Me.ClearOutputsBtn.Location = New System.Drawing.Point(12, 569)
         Me.ClearOutputsBtn.Name = "ClearOutputsBtn"
-        Me.ClearOutputsBtn.Size = New System.Drawing.Size(75, 68)
+        Me.ClearOutputsBtn.Size = New System.Drawing.Size(116, 68)
         Me.ClearOutputsBtn.TabIndex = 7
         Me.ClearOutputsBtn.Text = "Clear Output Windows"
         Me.ClearOutputsBtn.UseVisualStyleBackColor = True
         '
         'CleanupBtn
         '
-        Me.CleanupBtn.Location = New System.Drawing.Point(718, 569)
+        Me.CleanupBtn.Location = New System.Drawing.Point(1213, 569)
         Me.CleanupBtn.Name = "CleanupBtn"
         Me.CleanupBtn.Size = New System.Drawing.Size(75, 68)
         Me.CleanupBtn.TabIndex = 8
@@ -131,7 +137,7 @@ Partial Class MainFrm
         '
         'DequeueBtn
         '
-        Me.DequeueBtn.Location = New System.Drawing.Point(799, 569)
+        Me.DequeueBtn.Location = New System.Drawing.Point(1294, 569)
         Me.DequeueBtn.Name = "DequeueBtn"
         Me.DequeueBtn.Size = New System.Drawing.Size(75, 68)
         Me.DequeueBtn.TabIndex = 9
@@ -143,52 +149,55 @@ Partial Class MainFrm
         '
         'TriggerBtn
         '
-        Me.TriggerBtn.Location = New System.Drawing.Point(53, 99)
+        Me.TriggerBtn.Location = New System.Drawing.Point(6, 205)
         Me.TriggerBtn.Name = "TriggerBtn"
-        Me.TriggerBtn.Size = New System.Drawing.Size(75, 23)
+        Me.TriggerBtn.Size = New System.Drawing.Size(122, 34)
         Me.TriggerBtn.TabIndex = 10
-        Me.TriggerBtn.Text = "Trigger"
+        Me.TriggerBtn.Text = "Send TRIGGER"
         Me.TriggerBtn.UseVisualStyleBackColor = True
         '
         'AsciiSendBtn
         '
-        Me.AsciiSendBtn.Location = New System.Drawing.Point(6, 227)
+        Me.AsciiSendBtn.Location = New System.Drawing.Point(6, 306)
         Me.AsciiSendBtn.Name = "AsciiSendBtn"
         Me.AsciiSendBtn.Size = New System.Drawing.Size(122, 23)
         Me.AsciiSendBtn.TabIndex = 11
-        Me.AsciiSendBtn.Text = "Send"
+        Me.AsciiSendBtn.Text = "Send Text Below"
         Me.AsciiSendBtn.UseVisualStyleBackColor = True
         '
         'Label1
         '
-        Me.Label1.Location = New System.Drawing.Point(63, 78)
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label1.Location = New System.Drawing.Point(6, 143)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(65, 15)
+        Me.Label1.Size = New System.Drawing.Size(122, 49)
         Me.Label1.TabIndex = 12
-        Me.Label1.Text = "Control"
+        Me.Label1.Text = "Control" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Port 107"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label2
         '
-        Me.Label2.Location = New System.Drawing.Point(75, 206)
+        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label2.Location = New System.Drawing.Point(6, 274)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(53, 15)
+        Me.Label2.Size = New System.Drawing.Size(122, 52)
         Me.Label2.TabIndex = 13
-        Me.Label2.Text = "ASCII"
+        Me.Label2.Text = "ASCII" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Port 23"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label3
         '
-        Me.Label3.Location = New System.Drawing.Point(71, 424)
+        Me.Label3.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label3.Location = New System.Drawing.Point(6, 457)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(57, 14)
+        Me.Label3.Size = New System.Drawing.Size(122, 47)
         Me.Label3.TabIndex = 14
-        Me.Label3.Text = "Result"
+        Me.Label3.Text = "Result" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Port 25250"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'AsciiCommandTxt
         '
-        Me.AsciiCommandTxt.Location = New System.Drawing.Point(6, 256)
+        Me.AsciiCommandTxt.Location = New System.Drawing.Point(6, 329)
         Me.AsciiCommandTxt.Name = "AsciiCommandTxt"
         Me.AsciiCommandTxt.Size = New System.Drawing.Size(122, 23)
         Me.AsciiCommandTxt.TabIndex = 15
@@ -197,9 +206,10 @@ Partial Class MainFrm
         'ViewerPictureBox
         '
         Me.ViewerPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.ViewerPictureBox.Location = New System.Drawing.Point(703, 9)
+        Me.ViewerPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.ViewerPictureBox.Location = New System.Drawing.Point(680, 143)
         Me.ViewerPictureBox.Name = "ViewerPictureBox"
-        Me.ViewerPictureBox.Size = New System.Drawing.Size(666, 409)
+        Me.ViewerPictureBox.Size = New System.Drawing.Size(689, 420)
         Me.ViewerPictureBox.TabIndex = 16
         Me.ViewerPictureBox.TabStop = False
         '
@@ -207,7 +217,7 @@ Partial Class MainFrm
         '
         Me.ResultCountLbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.ResultCountLbl.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.ResultCountLbl.Location = New System.Drawing.Point(38, 502)
+        Me.ResultCountLbl.Location = New System.Drawing.Point(38, 540)
         Me.ResultCountLbl.Name = "ResultCountLbl"
         Me.ResultCountLbl.Size = New System.Drawing.Size(63, 23)
         Me.ResultCountLbl.TabIndex = 17
@@ -216,19 +226,61 @@ Partial Class MainFrm
         '
         'Label5
         '
-        Me.Label5.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label5.Location = New System.Drawing.Point(38, 438)
+        Me.Label5.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label5.Location = New System.Drawing.Point(12, 504)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(63, 52)
+        Me.Label5.Size = New System.Drawing.Size(116, 36)
         Me.Label5.TabIndex = 18
-        Me.Label5.Text = "Result" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Count"
+        Me.Label5.Text = "Result Count"
         Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'LogoPictureBox
+        '
+        Me.LogoPictureBox.BackgroundImage = CType(resources.GetObject("LogoPictureBox.BackgroundImage"), System.Drawing.Image)
+        Me.LogoPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.LogoPictureBox.Location = New System.Drawing.Point(12, 12)
+        Me.LogoPictureBox.Name = "LogoPictureBox"
+        Me.LogoPictureBox.Size = New System.Drawing.Size(447, 125)
+        Me.LogoPictureBox.TabIndex = 19
+        Me.LogoPictureBox.TabStop = False
+        '
+        'SendGetResultImageBtn
+        '
+        Me.SendGetResultImageBtn.Location = New System.Drawing.Point(6, 358)
+        Me.SendGetResultImageBtn.Name = "SendGetResultImageBtn"
+        Me.SendGetResultImageBtn.Size = New System.Drawing.Size(122, 43)
+        Me.SendGetResultImageBtn.TabIndex = 20
+        Me.SendGetResultImageBtn.Text = "Send getresultimage"
+        Me.SendGetResultImageBtn.UseVisualStyleBackColor = True
+        '
+        'SendGetImageBtn
+        '
+        Me.SendGetImageBtn.Location = New System.Drawing.Point(6, 407)
+        Me.SendGetImageBtn.Name = "SendGetImageBtn"
+        Me.SendGetImageBtn.Size = New System.Drawing.Size(122, 43)
+        Me.SendGetImageBtn.TabIndex = 21
+        Me.SendGetImageBtn.Text = "Send getimage"
+        Me.SendGetImageBtn.UseVisualStyleBackColor = True
+        '
+        'Label4
+        '
+        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label4.Location = New System.Drawing.Point(465, 12)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(499, 65)
+        Me.Label4.TabIndex = 22
+        Me.Label4.Text = "Zebra FS40 Camera Demo and Test Interface" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "for VisualBasic .NET"
+        Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'MainFrm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1381, 895)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.SendGetImageBtn)
+        Me.Controls.Add(Me.SendGetResultImageBtn)
+        Me.Controls.Add(Me.LogoPictureBox)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.ResultCountLbl)
         Me.Controls.Add(Me.ViewerPictureBox)
@@ -252,6 +304,7 @@ Partial Class MainFrm
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Form1"
         CType(Me.ViewerPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -277,4 +330,8 @@ Partial Class MainFrm
     Friend WithEvents ViewerPictureBox As PictureBox
     Friend WithEvents ResultCountLbl As Label
     Friend WithEvents Label5 As Label
+    Friend WithEvents LogoPictureBox As PictureBox
+    Friend WithEvents SendGetResultImageBtn As Button
+    Friend WithEvents SendGetImageBtn As Button
+    Friend WithEvents Label4 As Label
 End Class
