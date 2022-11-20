@@ -32,12 +32,13 @@ Public Class TensorTcpClient
     End Function
     Public Function Receive() As String
         Dim retString As String = ""
+        REM TODO Should wait for the delimiter LF, CRLF, etc.
         While (Available() > 0)
             Dim length As Integer = stream.Read(inputBuffer, 0, inputBuffer.Length)
             retString += Encoding.UTF8.GetString(inputBuffer, 0, length)
         End While
 
-        Return retString
+        Return retString.Trim()
     End Function
 
 End Class
