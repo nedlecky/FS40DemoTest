@@ -84,7 +84,7 @@ Partial Class MainFrm
         '
         'ConsoleRTB
         '
-        Me.ConsoleRTB.Location = New System.Drawing.Point(12, 823)
+        Me.ConsoleRTB.Location = New System.Drawing.Point(12, 718)
         Me.ConsoleRTB.Name = "ConsoleRTB"
         Me.ConsoleRTB.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth
         Me.ConsoleRTB.Size = New System.Drawing.Size(1357, 219)
@@ -316,7 +316,7 @@ Partial Class MainFrm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1381, 1054)
+        Me.ClientSize = New System.Drawing.Size(1381, 947)
         Me.Controls.Add(Me.SoftwareVersionLbl)
         Me.Controls.Add(Me.MatchstringTxt)
         Me.Controls.Add(Me.SendAnyBtn)
