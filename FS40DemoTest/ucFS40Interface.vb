@@ -89,9 +89,14 @@ Public Class ucFS40Interface
     End Function
 
     Public Function SendControl(message As String) As Integer
+        myForm.Print($"==> Control {message.Trim()}")
+        myForm.PrintControl($"==> {message.Trim()}")
+
         Return controlClient.Send(message)
     End Function
     Public Function SendAscii(message As String) As Integer
+        myForm.Print($"==> Ascii {message.Trim()}")
+        myForm.PrintAscii($"==> {message.Trim()}")
         Return asciiClient.Send(message)
     End Function
 

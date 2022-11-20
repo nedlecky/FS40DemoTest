@@ -12,12 +12,17 @@ Public Class MainFrm
     '   FS40 Comm Setup for Ned's Lab
     '       Ned's Laptop                                192.168.0.252  255.255.255.0  GW 192.168.0.200
     '       FS40                                        192.168.0.41   255.255.255.0  GW 192.168.0.200
+
+
+    ' Version
+    Dim softwareVersion As String = "1.1.0.0"
     Dim fs40 As ucFS40Interface = Nothing
     Public printQueue As Queue = New Queue
     Dim resultCount As Integer = 0
 
     Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.Text = "TensorID FS40 Demo/Test Program"
+        Me.Text = "TensorID FS40 Demo/Test Program  Version " + softwareVersion
+        SoftwareVersionLbl.Text = "Version " + softwareVersion
         LoadPersistent()
 
         UpdateResultCount(0)
@@ -96,18 +101,25 @@ Public Class MainFrm
         End If
     End Sub
 
+    ' Control Port 107 Buttons
     Private Sub TriggerBtn_Click(sender As Object, e As EventArgs) Handles TriggerBtn.Click
         fs40.SendControl("TRIGGER" + Chr(13) + Chr(10))
     End Sub
-    Private Sub AsciiSendBtn_Click(sender As Object, e As EventArgs) Handles AsciiSendBtn.Click
-        fs40.SendAscii(AsciiCommandTxt.Text + Chr(13) + Chr(10))
+    Private Sub SendMatchstringBtn_Click(sender As Object, e As EventArgs) Handles SendMatchstringBtn.Click
+        fs40.SendControl("UpdateJobParameter matchstring " + MatchstringTxt.Text + Chr(13) + Chr(10))
     End Sub
+
+
+    ' Ascii Port 23 Buttons
     Private Sub SendGetResultImageBtn_Click(sender As Object, e As EventArgs) Handles SendGetResultImageBtn.Click
         fs40.SendAscii("getresultimage" + Chr(13) + Chr(10))
     End Sub
-
     Private Sub SendGetImageBtn_Click(sender As Object, e As EventArgs) Handles SendGetImageBtn.Click
         fs40.SendAscii("getimage" + Chr(13) + Chr(10))
+    End Sub
+
+    Private Sub SendAnyBtn_Click(sender As Object, e As EventArgs) Handles SendAnyBtn.Click
+        fs40.SendAscii(AsciiCommandTxt.Text + Chr(13) + Chr(10))
     End Sub
 
     Private Sub UpdateResultCount(i As Integer)
@@ -140,7 +152,7 @@ Public Class MainFrm
 
         Dim lines() As String = fs40Return.Split(Chr(13))
         Print($"ImageParse sees {lines.Length} lines")
-        If lines.Length < 4 Then
+        If lines.Length < 3 Then
             Return Nothing
         End If
 
@@ -178,18 +190,17 @@ Public Class MainFrm
             Return
         End If
 
-
         If fs40.controlClient.Available > 0 Then
             Dim available As Integer = fs40.controlClient.Available
             Dim result As String = fs40.controlClient.Receive()
-            Print($"Control received {available} bytes  {result}")
-            PrintControl($"Received {available} bytes  {result}")
+            Print($"<== Control received {available} bytes  {result}")
+            PrintControl($"<== Received {available} bytes  {result}")
         End If
         If fs40.asciiClient.Available > 0 Then
             Dim available As Integer = fs40.asciiClient.Available
             Dim result = fs40.asciiClient.Receive()
-            Print($"Ascii received {available} bytes  {result}")
-            PrintAscii($"Received {available} bytes  {result}")
+            Print($"<== Ascii received {available} bytes  {result}")
+            PrintAscii($"<== Received {available} bytes  {result}")
 
             ImageParse(result)
         End If
@@ -197,8 +208,8 @@ Public Class MainFrm
             Dim available As Integer = fs40.resultClient.Available
             Dim result As String = fs40.resultClient.Receive()
             UpdateResultCount(resultCount + 1)
-            Print($"Result received {available} bytes  {result}")
-            PrintResult($"Received {available} bytes  {result}")
+            Print($"<== Result received {available} bytes  {result}")
+            PrintResult($"<== Received {available} bytes  {result}")
         End If
     End Sub
 

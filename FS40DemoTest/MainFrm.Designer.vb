@@ -48,6 +48,10 @@ Partial Class MainFrm
         Me.SendGetResultImageBtn = New System.Windows.Forms.Button()
         Me.SendGetImageBtn = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.SendMatchstringBtn = New System.Windows.Forms.Button()
+        Me.SendAnyBtn = New System.Windows.Forms.Button()
+        Me.MatchstringTxt = New System.Windows.Forms.TextBox()
+        Me.SoftwareVersionLbl = New System.Windows.Forms.Label()
         CType(Me.ViewerPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -80,7 +84,7 @@ Partial Class MainFrm
         '
         'ConsoleRTB
         '
-        Me.ConsoleRTB.Location = New System.Drawing.Point(12, 643)
+        Me.ConsoleRTB.Location = New System.Drawing.Point(12, 823)
         Me.ConsoleRTB.Name = "ConsoleRTB"
         Me.ConsoleRTB.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth
         Me.ConsoleRTB.Size = New System.Drawing.Size(1357, 219)
@@ -89,7 +93,7 @@ Partial Class MainFrm
         '
         'FS40ResultRTB
         '
-        Me.FS40ResultRTB.Location = New System.Drawing.Point(134, 457)
+        Me.FS40ResultRTB.Location = New System.Drawing.Point(134, 532)
         Me.FS40ResultRTB.MaxLength = 1000000
         Me.FS40ResultRTB.Name = "FS40ResultRTB"
         Me.FS40ResultRTB.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth
@@ -99,11 +103,11 @@ Partial Class MainFrm
         '
         'FS40AsciiRTB
         '
-        Me.FS40AsciiRTB.Location = New System.Drawing.Point(134, 274)
+        Me.FS40AsciiRTB.Location = New System.Drawing.Point(134, 306)
         Me.FS40AsciiRTB.MaxLength = 1000000
         Me.FS40AsciiRTB.Name = "FS40AsciiRTB"
         Me.FS40AsciiRTB.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth
-        Me.FS40AsciiRTB.Size = New System.Drawing.Size(540, 176)
+        Me.FS40AsciiRTB.Size = New System.Drawing.Size(540, 220)
         Me.FS40AsciiRTB.TabIndex = 5
         Me.FS40AsciiRTB.Text = ""
         '
@@ -113,13 +117,13 @@ Partial Class MainFrm
         Me.FS40ControlRTB.MaxLength = 1000000
         Me.FS40ControlRTB.Name = "FS40ControlRTB"
         Me.FS40ControlRTB.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth
-        Me.FS40ControlRTB.Size = New System.Drawing.Size(540, 125)
+        Me.FS40ControlRTB.Size = New System.Drawing.Size(540, 134)
         Me.FS40ControlRTB.TabIndex = 6
         Me.FS40ControlRTB.Text = ""
         '
         'ClearOutputsBtn
         '
-        Me.ClearOutputsBtn.Location = New System.Drawing.Point(12, 569)
+        Me.ClearOutputsBtn.Location = New System.Drawing.Point(12, 644)
         Me.ClearOutputsBtn.Name = "ClearOutputsBtn"
         Me.ClearOutputsBtn.Size = New System.Drawing.Size(116, 68)
         Me.ClearOutputsBtn.TabIndex = 7
@@ -149,16 +153,16 @@ Partial Class MainFrm
         '
         'TriggerBtn
         '
-        Me.TriggerBtn.Location = New System.Drawing.Point(6, 205)
+        Me.TriggerBtn.Location = New System.Drawing.Point(6, 193)
         Me.TriggerBtn.Name = "TriggerBtn"
-        Me.TriggerBtn.Size = New System.Drawing.Size(122, 34)
+        Me.TriggerBtn.Size = New System.Drawing.Size(122, 27)
         Me.TriggerBtn.TabIndex = 10
         Me.TriggerBtn.Text = "Send TRIGGER"
         Me.TriggerBtn.UseVisualStyleBackColor = True
         '
         'AsciiSendBtn
         '
-        Me.AsciiSendBtn.Location = New System.Drawing.Point(6, 306)
+        Me.AsciiSendBtn.Location = New System.Drawing.Point(6, 334)
         Me.AsciiSendBtn.Name = "AsciiSendBtn"
         Me.AsciiSendBtn.Size = New System.Drawing.Size(122, 23)
         Me.AsciiSendBtn.TabIndex = 11
@@ -178,7 +182,7 @@ Partial Class MainFrm
         'Label2
         '
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label2.Location = New System.Drawing.Point(6, 274)
+        Me.Label2.Location = New System.Drawing.Point(6, 302)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(122, 52)
         Me.Label2.TabIndex = 13
@@ -188,7 +192,7 @@ Partial Class MainFrm
         'Label3
         '
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label3.Location = New System.Drawing.Point(6, 457)
+        Me.Label3.Location = New System.Drawing.Point(6, 532)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(122, 47)
         Me.Label3.TabIndex = 14
@@ -197,11 +201,11 @@ Partial Class MainFrm
         '
         'AsciiCommandTxt
         '
-        Me.AsciiCommandTxt.Location = New System.Drawing.Point(6, 329)
+        Me.AsciiCommandTxt.Location = New System.Drawing.Point(6, 480)
         Me.AsciiCommandTxt.Name = "AsciiCommandTxt"
         Me.AsciiCommandTxt.Size = New System.Drawing.Size(122, 23)
         Me.AsciiCommandTxt.TabIndex = 15
-        Me.AsciiCommandTxt.Text = "getresultimage"
+        Me.AsciiCommandTxt.Text = "trigger"
         '
         'ViewerPictureBox
         '
@@ -217,7 +221,7 @@ Partial Class MainFrm
         '
         Me.ResultCountLbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.ResultCountLbl.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.ResultCountLbl.Location = New System.Drawing.Point(38, 540)
+        Me.ResultCountLbl.Location = New System.Drawing.Point(38, 615)
         Me.ResultCountLbl.Name = "ResultCountLbl"
         Me.ResultCountLbl.Size = New System.Drawing.Size(63, 23)
         Me.ResultCountLbl.TabIndex = 17
@@ -227,7 +231,7 @@ Partial Class MainFrm
         'Label5
         '
         Me.Label5.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label5.Location = New System.Drawing.Point(12, 504)
+        Me.Label5.Location = New System.Drawing.Point(12, 579)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(116, 36)
         Me.Label5.TabIndex = 18
@@ -246,7 +250,7 @@ Partial Class MainFrm
         '
         'SendGetResultImageBtn
         '
-        Me.SendGetResultImageBtn.Location = New System.Drawing.Point(6, 358)
+        Me.SendGetResultImageBtn.Location = New System.Drawing.Point(6, 363)
         Me.SendGetResultImageBtn.Name = "SendGetResultImageBtn"
         Me.SendGetResultImageBtn.Size = New System.Drawing.Size(122, 43)
         Me.SendGetResultImageBtn.TabIndex = 20
@@ -255,9 +259,9 @@ Partial Class MainFrm
         '
         'SendGetImageBtn
         '
-        Me.SendGetImageBtn.Location = New System.Drawing.Point(6, 407)
+        Me.SendGetImageBtn.Location = New System.Drawing.Point(6, 406)
         Me.SendGetImageBtn.Name = "SendGetImageBtn"
-        Me.SendGetImageBtn.Size = New System.Drawing.Size(122, 43)
+        Me.SendGetImageBtn.Size = New System.Drawing.Size(122, 31)
         Me.SendGetImageBtn.TabIndex = 21
         Me.SendGetImageBtn.Text = "Send getimage"
         Me.SendGetImageBtn.UseVisualStyleBackColor = True
@@ -272,11 +276,51 @@ Partial Class MainFrm
         Me.Label4.Text = "Zebra FS40 Camera Demo and Test Interface" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "for VisualBasic .NET"
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
+        'SendMatchstringBtn
+        '
+        Me.SendMatchstringBtn.Location = New System.Drawing.Point(6, 224)
+        Me.SendMatchstringBtn.Name = "SendMatchstringBtn"
+        Me.SendMatchstringBtn.Size = New System.Drawing.Size(122, 29)
+        Me.SendMatchstringBtn.TabIndex = 23
+        Me.SendMatchstringBtn.Text = "Set Matchstring"
+        Me.SendMatchstringBtn.UseVisualStyleBackColor = True
+        '
+        'SendAnyBtn
+        '
+        Me.SendAnyBtn.Location = New System.Drawing.Point(6, 451)
+        Me.SendAnyBtn.Name = "SendAnyBtn"
+        Me.SendAnyBtn.Size = New System.Drawing.Size(122, 29)
+        Me.SendAnyBtn.TabIndex = 24
+        Me.SendAnyBtn.Text = "Send Below"
+        Me.SendAnyBtn.UseVisualStyleBackColor = True
+        '
+        'MatchstringTxt
+        '
+        Me.MatchstringTxt.Location = New System.Drawing.Point(6, 254)
+        Me.MatchstringTxt.Name = "MatchstringTxt"
+        Me.MatchstringTxt.Size = New System.Drawing.Size(122, 23)
+        Me.MatchstringTxt.TabIndex = 25
+        Me.MatchstringTxt.Text = "024000013983"
+        '
+        'SoftwareVersionLbl
+        '
+        Me.SoftwareVersionLbl.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.SoftwareVersionLbl.Location = New System.Drawing.Point(463, 68)
+        Me.SoftwareVersionLbl.Name = "SoftwareVersionLbl"
+        Me.SoftwareVersionLbl.Size = New System.Drawing.Size(499, 41)
+        Me.SoftwareVersionLbl.TabIndex = 26
+        Me.SoftwareVersionLbl.Text = "<softwareVersion>"
+        Me.SoftwareVersionLbl.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'MainFrm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1381, 895)
+        Me.ClientSize = New System.Drawing.Size(1381, 1054)
+        Me.Controls.Add(Me.SoftwareVersionLbl)
+        Me.Controls.Add(Me.MatchstringTxt)
+        Me.Controls.Add(Me.SendAnyBtn)
+        Me.Controls.Add(Me.SendMatchstringBtn)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.SendGetImageBtn)
         Me.Controls.Add(Me.SendGetResultImageBtn)
@@ -334,4 +378,8 @@ Partial Class MainFrm
     Friend WithEvents SendGetResultImageBtn As Button
     Friend WithEvents SendGetImageBtn As Button
     Friend WithEvents Label4 As Label
+    Friend WithEvents SendMatchstringBtn As Button
+    Friend WithEvents SendAnyBtn As Button
+    Friend WithEvents MatchstringTxt As TextBox
+    Friend WithEvents SoftwareVersionLbl As Label
 End Class
