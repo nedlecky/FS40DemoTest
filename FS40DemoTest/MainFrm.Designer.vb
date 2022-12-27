@@ -300,7 +300,7 @@ Partial Class MainFrm
         Me.MatchstringTxt.Name = "MatchstringTxt"
         Me.MatchstringTxt.Size = New System.Drawing.Size(122, 23)
         Me.MatchstringTxt.TabIndex = 25
-        Me.MatchstringTxt.Text = "024000013983"
+        Me.MatchstringTxt.Text = "M6FTC01398109059U"
         '
         'SoftwareVersionLbl
         '
