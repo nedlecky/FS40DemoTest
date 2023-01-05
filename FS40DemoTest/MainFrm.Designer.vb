@@ -205,7 +205,7 @@ Partial Class MainFrm
         Me.AsciiCommandTxt.Name = "AsciiCommandTxt"
         Me.AsciiCommandTxt.Size = New System.Drawing.Size(122, 23)
         Me.AsciiCommandTxt.TabIndex = 15
-        Me.AsciiCommandTxt.Text = "trigger"
+        Me.AsciiCommandTxt.Text = "trigger 11"
         '
         'ViewerPictureBox
         '
