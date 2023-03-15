@@ -116,7 +116,7 @@ Partial Class MainFrm
         Me.FS40ControlRTB.MaxLength = 1000000
         Me.FS40ControlRTB.Name = "FS40ControlRTB"
         Me.FS40ControlRTB.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth
-        Me.FS40ControlRTB.Size = New System.Drawing.Size(432, 117)
+        Me.FS40ControlRTB.Size = New System.Drawing.Size(432, 135)
         Me.FS40ControlRTB.TabIndex = 6
         Me.FS40ControlRTB.Text = ""
         '
