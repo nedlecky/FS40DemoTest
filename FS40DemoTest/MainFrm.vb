@@ -1,7 +1,4 @@
-﻿Imports System.ComponentModel.DataAnnotations
-Imports System.IO
-Imports System.Runtime.CompilerServices
-Imports System.Windows.Forms.VisualStyles
+﻿Imports System.IO
 Imports Microsoft.Win32
 
 Public Class MainFrm
@@ -15,7 +12,7 @@ Public Class MainFrm
 
 
     ' Version
-    Dim softwareVersion As String = "1.1.0.0"
+    Dim softwareVersion As String = "1.2.0.0"
     Dim fs40 As ucFS40Interface = Nothing
     Public printQueue As Queue = New Queue
     Dim resultCount As Integer = 0
